@@ -49,4 +49,6 @@ cache/
 osmnx_cache/
 
 # Anotações e observações acerca do projeto
-notes for developer/
+notes_for_developer/
+teste.py
+requirements.in

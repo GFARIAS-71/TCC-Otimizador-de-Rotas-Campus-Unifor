@@ -31,8 +31,8 @@ def renderizar_cabecalho():
     ### 🖱️ Como usar:
     
     **Opção 1:** Clique em **dois pontos no mapa**  
-    **Opção 2:** Clique em **dois marcadores coloridos** (POIs)  
-    **Opção 3:** Use a **barra lateral** para selecionar POIs por categoria
+    **Opção 2:** Clique em **dois marcadores coloridos** (Pontos de Interesse)  
+    **Opção 3:** Use a **barra lateral** para selecionar Pontos de Interesse por categoria
     
     A rota ideal aparecerá automaticamente! 🚶‍♀️
     """)
@@ -108,7 +108,7 @@ def renderizar_sidebar(G, pontos, categorias):
         
         # --- Seleção de POIs por Categoria ---
         if pontos:
-            st.subheader("📍 Selecionar POIs")
+            st.subheader("📍 Selecionar Pontos de Interesse")
             
             # Organizar POIs por categoria
             pois_por_categoria = {}
@@ -150,7 +150,7 @@ def renderizar_sidebar(G, pontos, categorias):
             )
             
             # Botão para traçar rota
-            if st.button("🎯 Traçar Rota entre POIs", use_container_width=True):
+            if st.button("🎯 Traçar Rota entre Pontos Selecionados", use_container_width=True):
                 # Remove espaços extras dos nomes
                 origem_limpo = poi_origem.strip()
                 destino_limpo = poi_destino.strip()

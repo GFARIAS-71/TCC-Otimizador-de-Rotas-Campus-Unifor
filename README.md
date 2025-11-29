@@ -1,6 +1,5 @@
 # 🏫 Otimizador de Rotas - Campus Unifor
 
-
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.12+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
   <img src="https://img.shields.io/badge/Streamlit-1.51.0-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Streamlit">
@@ -84,7 +83,7 @@ Estes números evidenciam a **urgência de ambientes mais inclusivos** e tecnolo
 
 ### Algoritmos
 - **A\*** com heurística euclidiana (principal)
-- Suporte para Dijkstra tradicional e estendido
+- Suporte para Dijkstra
 
 ## 📐 Modelagem do Grafo
 
@@ -97,7 +96,7 @@ O campus é representado como um **grafo com as seguintes características**:
 | **Ciclos** | Cíclico | Múltiplas rotas interligadas |
 | **Arestas** | Simples | Máximo uma conexão entre pontos |
 | **Conectividade** | Conexo | Sempre existe um caminho |
-| **Dinamicidade** | Dinâmico | Carregamento a partir da API do OpenStreetMap e Adapta-se ao perfil do usuário |
+| **Dinamicidade** | Dinâmico | Carregamento a partir da API do OpenStreetMap e Adapta-se ao Perfil do Usuário |
 
 ### Ponderação das Arestas
 
@@ -213,9 +212,7 @@ Para reportar bugs ou sugerir melhorias:
 - Orientador: Prof. Belmondo Rodrigues Aragao Junior
 - Ano: 2025
 
-## 📄 Licença
-
-Este projeto foi desenvolvido para fins acadêmicos como Trabalho de Conclusão de Curso. 
+## 📄 Nota
 
 Esta aplicação utiliza dados do OpenStreetMap. As rotas são calculadas com base nos caminhos disponíveis no OSM e podem não refletir 100% a realidade atual do campus.
 

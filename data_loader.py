@@ -12,10 +12,12 @@ def carregar_grafo():
     """
     with st.spinner("🔄 Carregando rede de caminhos da Unifor..."):
         try:
+            ox.settings.useful_tags_way = ['wheelchair', 'surface', 'width', 'incline', 
+                      'ramp', 'crossing', 'highway']
             G = ox.graph_from_polygon(
                 POLYGON_CAMPUS,
                 custom_filter=FILTRO_OSM,
-                simplify=True
+                simplify=True,
             )
             
             # Mantém somente a maior componente (evita erro de NoPath)

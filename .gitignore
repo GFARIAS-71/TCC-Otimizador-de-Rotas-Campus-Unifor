@@ -52,3 +52,5 @@ osmnx_cache/
 notes_for_developer/
 teste.py
 requirements.in
+benchmark_algoritmos.py
+benchmark_report.md

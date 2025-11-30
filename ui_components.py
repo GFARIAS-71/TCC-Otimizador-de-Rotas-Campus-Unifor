@@ -25,7 +25,7 @@ ICONES_CATEGORIAS = {
 
 def renderizar_cabecalho():
     """Renderiza o cabeçalho da aplicação"""
-    st.title("🏫 Rotas a Pé dentro do Campus da Unifor")
+    st.title("🏫 Rotas para Pedestres dentro do Campus da Unifor")
     
     st.markdown("""
     ### 🖱️ Como usar:

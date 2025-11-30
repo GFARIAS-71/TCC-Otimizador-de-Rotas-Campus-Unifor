@@ -7,7 +7,7 @@ from shapely.geometry import Polygon
 def configurar_pagina():
     """Configura as propriedades da página Streamlit"""
     st.set_page_config(
-        page_title="Rotas a Pé - Campus Unifor",
+        page_title="Rotas para Pedestres - Campus Unifor",
         page_icon="🏫",
         layout="wide",
         initial_sidebar_state="expanded"

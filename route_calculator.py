@@ -83,13 +83,13 @@ def extrair_geometria_rota(G, rota_nodes):
 
 def calcular_rota(G, origem, destino, algoritmo="astar"):
     """
-    Calcula a rota mais curta entre dois pontos usando A* ou Dijkstra.
+    Calcula a rota mais curta entre dois pontos usando A*, Dijkstra bidirecional ou Dijkstra unidirecional.
     
     Args:
         G: Grafo NetworkX
         origem: Tupla (lat, lon) do ponto de origem
         destino: Tupla (lat, lon) do ponto de destino
-        algoritmo: "astar" (padrão) ou "dijkstra"
+        algoritmo: "astar" (padrão), "dijkstra" (bidirecional), ou "dijkstra_uni" (unidirecional)
         
     Returns:
         Tupla (pontos_rota, distancia) ou (None, None) se não houver rota
@@ -101,7 +101,7 @@ def calcular_rota(G, origem, destino, algoritmo="astar"):
         
         # Calcula caminho de acordo com o algoritmo escolhido
         if algoritmo.lower() == "astar":
-            # Usa A* com heurística de distância euclidiana
+            # Usa A* com heurística de distância euclidiana (unidirecional)
             rota_nodes = nx.astar_path(
                 G, 
                 no_origem, 
@@ -116,8 +116,16 @@ def calcular_rota(G, origem, destino, algoritmo="astar"):
                 heuristic=lambda u, v: heuristica_astar(G, u, v),
                 weight="length"
             )
-        else:  # dijkstra
-            # Usa Dijkstra (algoritmo padrão do NetworkX)
+        elif algoritmo.lower() == "dijkstra_uni":
+            # Usa Dijkstra UNIDIRECIONAL (single-source)
+            # Calcula caminhos de origem para todos os nós, mas retorna apenas para destino
+            paths = nx.single_source_dijkstra_path(G, no_origem, weight="length")
+            lengths = nx.single_source_dijkstra_path_length(G, no_origem, weight="length")
+            
+            rota_nodes = paths[no_destino]
+            distancia = lengths[no_destino]
+        else:  # dijkstra (bidirecional - comportamento padrão do NetworkX)
+            # Usa Dijkstra BIDIRECIONAL (comportamento padrão de nx.shortest_path)
             rota_nodes = nx.shortest_path(G, no_origem, no_destino, weight="length")
             distancia = nx.shortest_path_length(G, no_origem, no_destino, weight="length")
         
@@ -142,13 +150,18 @@ def calcular_rota_completa(G, origem, destino, perfil, algoritmo="astar"):
         origem: Tupla (lat, lon) do ponto de origem
         destino: Tupla (lat, lon) do ponto de destino
         perfil: Perfil de mobilidade do usuário
-        algoritmo: "astar" (padrão) ou "dijkstra"
+        algoritmo: "astar" (padrão), "dijkstra" (bidirecional), ou "dijkstra_uni" (unidirecional)
         
     Returns:
         Tupla (pontos_rota, distancia) ou (None, None) se não houver rota
     """
     # Mensagem do spinner diferenciada por algoritmo
-    mensagem_spinner = "🔍 Calculando melhor rota (A*)..." if algoritmo.lower() == "astar" else "📍 Calculando melhor rota (Dijkstra)..."
+    if algoritmo.lower() == "astar":
+        mensagem_spinner = "🔍 Calculando melhor rota (A*)..."
+    elif algoritmo.lower() == "dijkstra_uni":
+        mensagem_spinner = "🔍 Calculando melhor rota (Dijkstra Unidirecional)..."
+    else:
+        mensagem_spinner = "🔍 Calculando melhor rota (Dijkstra Bidirecional)..."
     
     with st.spinner(mensagem_spinner):
         pontos_rota, distancia = calcular_rota(G, origem, destino, algoritmo)

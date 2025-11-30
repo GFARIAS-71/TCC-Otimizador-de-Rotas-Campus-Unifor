@@ -123,6 +123,22 @@ PERFIS_MOBILIDADE: Dict[str, MobilityProfile] = {
         prefere_faixas=True,
         cor_rota="#FFD700",  # Dourado
         mensagem_informativa="⚠️ Rota adaptada para recuperação. Minimiza obstáculos e esforço."
+    ),
+    
+    "obeso": MobilityProfile(
+        nome="Pessoa com Obesidade",
+        descricao="Pessoa adulta com obesidade - redução de resistência física",
+        icone="🚶‍♂️",
+        velocidade_caminhada=58.0,  # ~3.5 km/h - velocidade reduzida
+        tamanho_passo=0.68,  # Passos ligeiramente menores
+        penalizacao_sem_rampa=3.5,  # Dificuldade moderada com degraus
+        penalizacao_sem_faixa=2.0,  # Preferência por segurança
+        penalizacao_escadas=9.0,  # Evita bastante - alto gasto energético
+        penalizacao_inclinacao=6.0,  # Forte dificuldade em subidas - fadiga rápida
+        requer_acessibilidade=True,  # Beneficia-se de rotas acessíveis
+        prefere_faixas=True,
+        cor_rota="#FF6347",  # Tomato red
+        mensagem_informativa="⚠️ Rota otimizada para conforto. Evita escadas e inclinações íngremes para reduzir fadiga."
     )
 }
 
